@@ -1,0 +1,24 @@
+# Arquivos do Node.js
+node_modules/
+
+# Arquivos de compilação TypeScript
+dist/
+
+# Arquivo de configuração do ambiente
+.env
+
+# Arquivos de configuração do VSCode
+.vscode/
+
+# Arquivos de log
+logs/
+*.log
+
+# Arquivos de configuração do TypeScript
+tsconfig.json
+
+# Arquivos do MongoDB
+/data/
+
+# Arquivos de backup (se você estiver fazendo backup localmente)
+/backup/
