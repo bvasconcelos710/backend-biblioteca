@@ -14,9 +14,6 @@ dist/
 logs/
 *.log
 
-# Arquivos de configuração do TypeScript
-tsconfig.json
-
 # Arquivos do MongoDB
 /data/
 
