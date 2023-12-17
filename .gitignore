@@ -5,7 +5,6 @@ node_modules/
 dist/
 
 # Arquivo de configuração do ambiente
-.env
 
 # Arquivos de configuração do VSCode
 .vscode/
