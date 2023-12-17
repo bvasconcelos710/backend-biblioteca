@@ -3,7 +3,7 @@ import cors from 'cors';
 import routes from './routes';
 
 const app = express();
-const PORT = process.env.POR || 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -12,6 +12,4 @@ app.use(express.json());
 app.use(routes);
 
 // Inicializar o servidor
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-});
+app.listen(PORT, "192.168.2.106", () => console.log(`Server running on port ${PORT}`));

@@ -6,8 +6,7 @@ import jwt from 'jsonwebtoken';
 const SECRET_KEY = process.env.SECRET_KEY || ''
 
 export const register = async (req: Request, res: Response): Promise<void> => {
-    const { matricula, nome, email, telefone, senha, categoria, latitude, longitude } = req.body;
-
+    const { matricula, nome, email, telefone, senha, categoria } = req.body;
     try {
         // Verifica se o usuário já existe
         const usuarioExistente = await Usuario.findOne({ email });
@@ -24,17 +23,17 @@ export const register = async (req: Request, res: Response): Promise<void> => {
             telefone,
             senha,
             categoria,
-            latitude,
-            longitude,
             estado: {
                 pendenciaDeDevolucao: false,
                 podeFazerEmprestimo: true,
             },
         });
-
         await novoUsuario.save();
-
     } catch (error: any) {
+        if (error.name === 'ValidationError') {
+            res.status(400).json({ message: error.message });
+            return;
+        }
         res.status(500).json({ message: error.message });
     }
 };
@@ -54,8 +53,9 @@ export const login = async (req: Request, res: Response): Promise<void> => {
             SECRET_KEY,
             { expiresIn: 3600 });
 
-        res.json({ token });
+        res.json({ token, userId: usuario._id });
     } catch (error: any) {
+        console.error(error);
         res.status(500).json({ message: error.message });
     }
 };

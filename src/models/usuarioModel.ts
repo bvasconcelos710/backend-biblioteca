@@ -11,8 +11,6 @@ export interface UsuarioInterface extends Document {
     telefone: string;
     senha: string;
     categoria: Categoria;
-    latitude: string;
-    longitude: string;
     estado: {
         pendenciaDeDevolucao: boolean;
         podeFazerEmprestimo: boolean;
@@ -26,8 +24,6 @@ const UsuarioSchema: Schema = new Schema({
     telefone: { type: String, required: true },
     senha: { type: String, required: true },
     categoria: { type: String, enum: ['aluno', 'professor'], required: true },
-    latitude: { type: String, required: true },
-    longitude: { type: String, required: true },
     estado: {
         pendenciaDeDevolucao: { type: Boolean, default: false },
         podeFazerEmprestimo: { type: Boolean, default: true }

@@ -30,7 +30,6 @@ export const getLivroById = async (req: Request, res: Response): Promise<void> =
 // Cria um novo livro
 export const createLivro = async (req: Request, res: Response): Promise<void> => {
     const novoLivro = req.body;
-    console.log(novoLivro);
     try {
         const livroCriado: LivroInterface = await Livro.create(novoLivro);
         res.status(201).json(livroCriado);

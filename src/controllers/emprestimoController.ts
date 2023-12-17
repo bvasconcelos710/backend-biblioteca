@@ -4,7 +4,7 @@ import Emprestimo, { EmprestimoInterface } from '../models/emprestimoModel';
 // Retorna todos os emprestimos
 export const getAllemprestimos = async (req: Request, res: Response): Promise<void> => {
     try {
-        const emprestimos = await Emprestimo.find();
+        const emprestimos = await Emprestimo.find().populate('livro');
         res.json(emprestimos);
     } catch (error: any) {
         res.status(500).json({ message: error.message });

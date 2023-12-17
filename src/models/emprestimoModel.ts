@@ -9,7 +9,6 @@ export interface EmprestimoInterface extends Document {
     dataEntrega: Date;
     livro: LivroInterface;
     usuario: UsuarioInterface;
-    diasDesdeUltimoEmprestimo: Number;
 }
 
 const EmprestimoSchema: Schema = new Schema({
