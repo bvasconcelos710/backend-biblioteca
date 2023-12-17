@@ -1,11 +1,22 @@
-import { MongoClient, MongoClientOptions, Db } from 'mongodb';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 const MONGO_URI = process.env.MONGO_URI || '';
-const DATABASE_NAME = process.env.DATABASE_NAME || '';
 
+
+const mongoose = require('mongoose');
+
+main().catch(err => console.log(err));
+
+async function main() {
+  await mongoose.connect(MONGO_URI);
+  console.log('Conectado com o MongoDB');
+}
+
+export default mongoose;
+
+/*
 let db: Db;
 
 export const connectDB = async () => {
@@ -26,3 +37,4 @@ export const getDB = () => {
   }
   return db;
 };
+*/

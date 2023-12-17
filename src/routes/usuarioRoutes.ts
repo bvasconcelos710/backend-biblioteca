@@ -1,71 +1,26 @@
-import express, { Request, Response } from 'express';
-import { ObjectId } from 'mongodb';
-import { UsuarioModel, Usuario } from '../models/model';
+import express from 'express';
+import usuarioController from '../controllers/usuarioController';
 
 const router = express.Router();
 
+// Rota para registrar um novo usuário
+router.post('/usuarios', usuarioController.register);
+// Rota para login
+router.post('/usuarios', usuarioController.login);
 // Rota para criar um novo usuário
-router.post('/usuarios', async (req: Request, res: Response) => {
-  try {
-    const novoUsuario: Usuario = req.body;
-    await UsuarioModel.createUsuario(novoUsuario);
-    res.status(201).send('Usuário criado com sucesso');
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Erro ao criar usuário');
-  }
-});
-
+//router.post('/usuarios', usuarioController.createUsuario);
 // Rota para obter todos os usuários
-router.get('/usuarios', async (req: Request, res: Response) => {
-  try {
-    const usuarios = await UsuarioModel.getUsuarios();
-    res.status(200).json(usuarios);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Erro ao buscar usuários');
-  }
-});
-
+router.get('/usuarios', usuarioController.getAllusuarios);
 // Rota para obter um usuário pelo ID
-router.get('/usuarios/:id', async (req: Request, res: Response) => {
-  try {
-    const usuarioId = new ObjectId(req.params.id);
-    const usuario = await UsuarioModel.getUsuarioById(usuarioId);
-    if (usuario) {
-      res.status(200).json(usuario);
-    } else {
-      res.status(404).send('Usuário não encontrado');
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Erro ao buscar usuário');
-  }
-});
-
+router.get('/usuarios/:id', usuarioController.getUsuarioById);
 // Rota para atualizar um usuário pelo ID
-router.put('/usuarios/:id', async (req: Request, res: Response) => {
-  try {
-    const usuarioId = new ObjectId(req.params.id);
-    const usuarioAtualizado: Usuario = req.body;
-    await UsuarioModel.updateUsuario(usuarioId, usuarioAtualizado);
-    res.status(200).send('Usuário atualizado com sucesso');
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Erro ao atualizar usuário');
-  }
-});
-
+router.put('/usuarios/:id', usuarioController.updateUsuario);
 // Rota para excluir um usuário pelo ID
-router.delete('/usuarios/:id', async (req: Request, res: Response) => {
-  try {
-    const usuarioId = new ObjectId(req.params.id);
-    await UsuarioModel.deleteUsuario(usuarioId);
-    res.status(200).send('Usuário excluído com sucesso');
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Erro ao excluir usuário');
-  }
-});
+router.delete('/usuarios/:id', usuarioController.deleteUsuario);
+// Rota para verificar pendências
+router.get('/usuarios/:id', usuarioController.verificarPendencia);
+// Rota para resolver pendências
+router.get('/usuarios/:id', usuarioController.resolverPendencia);
+
 
 export default router;

@@ -1,5 +1,4 @@
-import { ObjectId } from 'mongodb';
-import {getDB } from '../db/db';
+/*const mongoose = require('../db');
 
 export interface Livro {
   _id: ObjectId;
@@ -55,7 +54,7 @@ export const LivroModel = {
 };
 
 export const UsuarioModel = {
-  
+
   async getUsuarioComPendencias(usuarioId: ObjectId): Promise<Usuario | null> {
     const usuario = await getDB().collection<Usuario>('usuarios').findOne({ _id: usuarioId });
 
@@ -84,7 +83,7 @@ export const UsuarioModel = {
       { $set: { 'estado.pendenciaDeDevolucao': false, 'estado.podeFazerEmprestimo': true } } // Atualiza os campos de estado
     );
   },
- 
+
   async createUsuario(usuario: Usuario): Promise<void> {
     await getDB().collection<Usuario>('usuarios').insertOne(usuario);
   },
@@ -127,3 +126,4 @@ export const EmprestimoModel = {
     await getDB().collection<Emprestimo>('emprestimos').deleteOne({ _id: id });
   },
 };
+*/
