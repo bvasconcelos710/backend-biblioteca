@@ -1,26 +1,35 @@
 # Biblioteca-PDM
 
-Este projeto é um sistema online de controle de empréstimo de livros, desenvolvido com Node.js, TypeScript, MongoDB e Mongoose. 
+Este projeto é uma API REST de um sistema online de controle de empréstimo de livros, desenvolvido com Node Js, TypeScript, Express Js, MongoDB e Mongoose. 
 
-## Siga os passos abaixo para iniciar o projeto:
+## Para executar o projeto:
 
-* npm install
+* clone o projeto:
 
-* Configurar Variáveis de Ambiente em um arquivo .env com as seguintes variáveis:
+````bash
+ git clone https://github.com/bvasconcelos710/backend-biblioteca.git
+````
 
-MONGO_URI
-DATABASE_NAME
-PORT
+* instale as dependências:
 
-* Compilar e Executar o Projeto:
-* npm run build
-* npm start
+````bash
+ npm install
+````
 
-O servidor estará em execução em http://localhost:3000.
+* Configure Variáveis de Ambiente em um arquivo .env com as seguintes variáveis:
 
-Rotas Disponíveis
+- MONGO_URI
+- DATABASE_NAME
+- PORT
 
-Livros:
+* Inicie o Projeto:
+````bash
+ npm start
+````
+
+## Rotas Disponíveis
+
+### Livros:
 
 * GET /api/livros: Obter todos os livros
 * GET /api/livros/:id: Obter um livro por ID
@@ -28,7 +37,7 @@ Livros:
 * PUT /api/livros/:id: Atualizar um livro por ID
 * DELETE /api/livros/:id: Excluir um livro por ID
 
-Usuários:
+### Usuários:
 
 * GET /api/usuarios: Obter todos os usuários
 * GET /api/usuarios/:id: Obter um usuário por ID
@@ -36,7 +45,7 @@ Usuários:
 * PUT /api/usuarios/:id: Atualizar um usuário por ID
 * DELETE /api/usuarios/:id: Excluir um usuário por ID
 
-Empréstimos:
+### Empréstimos:
 
 * GET /api/emprestimos: Obter todos os empréstimos
 * GET /api/emprestimos/:id: Obter um empréstimo por ID
