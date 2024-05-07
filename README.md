@@ -4,25 +4,25 @@ Este projeto é uma API REST de um sistema online de controle de empréstimo de 
 
 ## Para executar o projeto:
 
-* clone o projeto:
+### Clone o projeto:
 
 ````bash
  git clone https://github.com/bvasconcelos710/backend-biblioteca.git
 ````
 
-* instale as dependências:
+### Instale as dependências:
 
 ````bash
  npm install
 ````
 
-* Configure Variáveis de Ambiente em um arquivo .env com as seguintes variáveis:
+### Configure Variáveis de Ambiente em um arquivo .env com as seguintes variáveis:
 
 - MONGO_URI
 - DATABASE_NAME
 - PORT
 
-* Inicie o Projeto:
+### Inicie o Projeto:
 ````bash
  npm start
 ````
